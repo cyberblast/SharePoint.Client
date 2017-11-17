@@ -47,23 +47,22 @@ client.Authenticate();
 ```C#
 using System;
 using cyberblast.SharePoint.Client;
-using Microsoft.SharePoint.Client;
 namespace ConsoleApp1 {
     class Program {
+		const int ROW_LIMIT = 100;
         static void Main(string[] args) {
-            SPClient client = new SPClient("http://yourSharePointUrl");
+			ISPClient client = new SPClient<TMGAuthenticator>("http://yourSharePointUrl", "domain", "loginName", "password");
+			client.Authenticate();
 
             var filter = QueryBuilder.Eq(
                 QueryBuilder.Static(7, FieldType.Number), 
                 QueryBuilder.FieldRef("Id"));
-            var rowLimit = 100;
+			var query = QueryBuilder.Query(filter, ROW_LIMIT);
 
-            CamlQuery query = new CamlQuery() {
-                ViewXml = QueryBuilder.Query(filter, rowLimit)
-            };
             void Callback(ListItem item) {
                 Console.WriteLine(item.Id);
             }
+
             client.IterateItems("Documents", query, Callback);
         }
     }
@@ -74,7 +73,7 @@ namespace ConsoleApp1 {
 
 * DefaultAuthentication
 
-  Authenticate using NTLM/Kerberos
+  Authenticate using NTLM/Kerberos 
   This one is also used when no Authenticator is specified
   
 * TMGAuthentication
@@ -83,6 +82,6 @@ namespace ConsoleApp1 {
   
 * O365Authenticator
 
-  Opens a browser window requesting for O365 credentials.
+  Opens a browser window requesting for O365 credentials. 
   Currently only working when using Windows Forms. 
-  Contained in separate namespace `cyberblast.Claims.WinForm`
+  Contained in separate namespace `cyberblast.Claims.WinForm` 

@@ -4,7 +4,7 @@ namespace cyberblast.SharePoint.Client
 {
     public class QueryBuilder
     {
-        public static string Query(Expression filter, int rowlimit, params Field[] orderByFields)
+        public static Query Filter(Expression filter, int rowlimit, params Field[] orderByFields)
         {
             return string.Format("<View><Query>{0}{1}</Query><RowLimit>{2}</RowLimit></View>", Where(filter), OrderBy(orderByFields), rowlimit);
         }
@@ -80,6 +80,16 @@ namespace cyberblast.SharePoint.Client
             }
             public static implicit operator Field(string d) {
                 return new Field(d);
+            }
+        }
+        public class Query : Value {
+            public Query(string value) : base(value) { }
+
+            public static implicit operator string(Query d) {
+                return d.ToString();
+            }
+            public static implicit operator Query(string d) {
+                return new Query(d);
             }
         }
 

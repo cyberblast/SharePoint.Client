@@ -162,6 +162,36 @@ namespace cyberblast.SharePoint.Client {
         public void IterateItems(string listName, CamlQuery query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
             Execute(ctx => IterateItems(ctx, listName, query, iterator, retrievals));
         }
+        public void IterateItems(ClientContext ctx, string listName, QueryBuilder.Query query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
+            List list = ctx.Web.Lists.GetByTitle(listName);
+            CamlQuery caml = new CamlQuery(){
+                ViewXml = query
+            };
+            caml.ListItemCollectionPosition = null;
+            ListItemCollection items;
+            do {
+                items = list.GetItems(caml);
+
+                ctx.Load(items, retrievals);
+                ctx.ExecuteQuery();
+
+                caml.ListItemCollectionPosition = items.ListItemCollectionPosition;
+                if (items != null && items.Count > 0) {
+                    using (IEnumerator<ListItem> listItemEnumerator = items.GetEnumerator()) {
+                        while (listItemEnumerator.MoveNext()) {
+                            iterator(listItemEnumerator.Current);
+                        }
+                    }
+                }
+            }
+            while (caml.ListItemCollectionPosition != null);
+
+            items = null;
+            list = null;
+        }
+        public void IterateItems(string listName, QueryBuilder.Query query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
+            Execute(ctx => IterateItems(ctx, listName, query, iterator, retrievals));
+        }
         private void ExecutingWebRequest(object sender, WebRequestEventArgs e) {
             if (!FormsBasedAuthAccepted)
                 e.WebRequestExecutor.WebRequest.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");

@@ -9,4 +9,4 @@ deploy:
   script:
     - /bin/sh ./deploy.sh
   on:
-    tags: true
+    tags: false

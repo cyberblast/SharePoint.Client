@@ -49,15 +49,15 @@ using System;
 using cyberblast.SharePoint.Client;
 namespace ConsoleApp1 {
     class Program {
-		const int ROW_LIMIT = 100;
+        const int ROW_LIMIT = 100;
         static void Main(string[] args) {
-			ISPClient client = new SPClient<TMGAuthenticator>("http://yourSharePointUrl", "domain", "loginName", "password");
-			client.Authenticate();
+            ISPClient client = new SPClient<TMGAuthenticator>("http://yourSharePointUrl", "domain", "loginName", "password");
+            client.Authenticate();
 
             var filter = QueryBuilder.Eq(
-                QueryBuilder.Static(7, FieldType.Number), 
+                QueryBuilder.Static(7, FieldType.Number),
                 QueryBuilder.FieldRef("Id"));
-			var query = QueryBuilder.Query(filter, ROW_LIMIT);
+            var query = QueryBuilder.Query(filter, ROW_LIMIT);
 
             void Callback(ListItem item) {
                 Console.WriteLine(item.Id);

@@ -79,4 +79,4 @@ namespace ConsoleApp1 {
 * O365Authenticator
   Opens a browser window requesting for O365 credentials.
   Currently only working when using Windows Forms.
-  > Tip: You can save and reuse authentication cookies `client.Cookies`
+  > Tip: You can save and reuse authentication cookies via `client.Cookies`

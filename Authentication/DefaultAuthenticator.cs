@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Authentication {
+namespace cyberblast.Authentication {
     public class DefaultAuthenticator : IAuthenticator
     {
         public event ExceptionHandler OnException = (e) => { };

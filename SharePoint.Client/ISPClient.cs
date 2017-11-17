@@ -3,7 +3,7 @@ using System;
 using System.Linq.Expressions;
 using System.Net;
 
-namespace SharePoint.Client {
+namespace cyberblast.SharePoint.Client {
     public interface ISPClient
     {
         event ExceptionHandler OnException;

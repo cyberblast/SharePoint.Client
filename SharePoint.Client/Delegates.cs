@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.SharePoint.Client;
 
-namespace SharePoint.Client {
+namespace cyberblast.SharePoint.Client {
     public delegate void ExceptionHandler(Exception e);
     public delegate void Call(ClientContext ctx);
     public delegate void ItemMethod(ListItem item);

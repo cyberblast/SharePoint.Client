@@ -7,8 +7,8 @@
     <ProjectGuid>{D1D21FDA-0F7C-4408-8D11-CC26952409DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharePoint.Client</RootNamespace>
-    <AssemblyName>SharePoint.Client</AssemblyName>
+    <RootNamespace>cyberblast.SharePoint.Client</RootNamespace>
+    <AssemblyName>cyberblast.SharePoint.Client</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

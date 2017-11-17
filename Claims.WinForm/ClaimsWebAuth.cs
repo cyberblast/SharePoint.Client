@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Security;
 using System.Windows.Forms;
 
-namespace Claims.WinForm {
+namespace cyberblast.Claims.WinForm {
     /// <summary>
     /// Provides means to authenticate a user via a pop up login form.
     /// </summary>

@@ -1,8 +1,8 @@
-﻿using Authentication;
+﻿using cyberblast.Authentication;
 using System;
 using System.Net;
 
-namespace Claims.WinForm {
+namespace cyberblast.Claims.WinForm {
     public class O365Authenticator : IAuthenticator
     {
         public event ExceptionHandler OnException = (e) => { };

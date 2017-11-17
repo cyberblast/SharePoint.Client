@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Claims.WinForm {
+namespace cyberblast.Claims.WinForm {
     /// <summary>
     /// WinInet.dll wrapper
     /// </summary>

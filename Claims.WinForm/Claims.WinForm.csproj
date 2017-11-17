@@ -7,8 +7,8 @@
     <ProjectGuid>{B7BAB34A-F9B5-4D6E-8219-4B62C9A81EE1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Claims.WinForm</RootNamespace>
-    <AssemblyName>Claims.WinForm</AssemblyName>
+    <RootNamespace>cyberblast.Claims.WinForm</RootNamespace>
+    <AssemblyName>cyberblast.Claims.WinForm</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

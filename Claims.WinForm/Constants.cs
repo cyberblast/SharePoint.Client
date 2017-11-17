@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Claims.WinForm {
+namespace cyberblast.Claims.WinForm {
     public static class Constants
     {
         public const string WR_METHOD_OPTIONS = "OPTIONS";

@@ -3,7 +3,7 @@ using System.Net;
 using System.Text;
 
 
-namespace Claims.WinForm {
+namespace cyberblast.Claims.WinForm {
     public static class ClaimClientContext
     {
         /// <summary>

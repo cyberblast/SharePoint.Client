@@ -1,11 +1,11 @@
-﻿using Authentication;
+﻿using cyberblast.Authentication;
 using Microsoft.SharePoint.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Net;
 
-namespace SharePoint.Client {
+namespace cyberblast.SharePoint.Client {
     public enum State { Offline, Connecting, Connected, Error, ConnectionFailed, AuthenticationFailed }
 
     public class SPClient : SPClient<DefaultAuthenticator> {

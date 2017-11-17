@@ -1,6 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 
-namespace SharePoint.Client
+namespace cyberblast.SharePoint.Client
 {
     public class QueryBuilder
     {

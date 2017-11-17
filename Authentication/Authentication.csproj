@@ -7,8 +7,8 @@
     <ProjectGuid>{60E6F87A-7CEF-4B51-A74A-36C303B6F841}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Authentication</RootNamespace>
-    <AssemblyName>Authentication</AssemblyName>
+    <RootNamespace>cyberblast.Authentication</RootNamespace>
+    <AssemblyName>cyberblast.Authentication</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

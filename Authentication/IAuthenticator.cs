@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Authentication {
+namespace cyberblast.Authentication {
     public delegate void ExceptionHandler(Exception e);
     public interface IAuthenticator 
     {

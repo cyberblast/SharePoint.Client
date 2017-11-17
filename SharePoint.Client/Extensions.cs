@@ -1,6 +1,6 @@
 ﻿using Microsoft.SharePoint.Client;
 
-namespace SharePoint.Client {
+namespace cyberblast.SharePoint.Client {
     public static class Extensions
     {
         public static T GetValue<T>(this ListItem item, string name)

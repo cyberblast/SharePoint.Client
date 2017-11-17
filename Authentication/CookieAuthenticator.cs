@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Authentication {
+namespace cyberblast.Authentication {
     public abstract class CookieAuthenticator : IAuthenticator
     {
         public event ExceptionHandler OnException = (e) => { };

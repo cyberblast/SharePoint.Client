@@ -1,5 +1,8 @@
 language: csharp
 solution: SharePoint.Client.sln
+sudo: false
+mono:
+  - latest
 deploy:
   skip_cleanup: true
   provider: script

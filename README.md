@@ -73,7 +73,7 @@ namespace ConsoleApp1 {
 
 * DefaultAuthentication
 
-  Authenticate using NTLM/Kerberos 
+  Authenticate using NTLM/Kerberos  
   This one is also used when no Authenticator is specified
   
 * TMGAuthentication
@@ -82,6 +82,6 @@ namespace ConsoleApp1 {
   
 * O365Authenticator
 
-  Opens a browser window requesting for O365 credentials. 
-  Currently only working when using Windows Forms. 
+  Opens a browser window requesting for O365 credentials.  
+  Currently only working when using Windows Forms.  
   Contained in separate namespace `cyberblast.Claims.WinForm` 

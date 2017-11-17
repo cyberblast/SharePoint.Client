@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/cyberblast/SharePoint.Client</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/cyberblast/SharePoint.Client/master/cyberblast64.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Adapter Library to communicate with an on premise SharePoint 2013</description>
+    <description>Adapter Library to communicate with on premise SharePoint 2013</description>
     <releaseNotes>Initial Release</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SharePoint 15 2013 Client Adapter Library</tags>

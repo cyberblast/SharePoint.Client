@@ -2,7 +2,6 @@
 
 echo "[INFO] Download nuget"
 wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe;
-#mozroots --import --sync
 
 echo "[INFO] Create nuget package"
 mono nuget.exe pack cyberblast.SharePoint.Client.nuspec -properties version=1.0.$TRAVIS_BUILD_NUMBER && \

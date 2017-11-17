@@ -1,2 +1,9 @@
 language: csharp
 solution: SharePoint.Client.sln
+deploy:
+  skip_cleanup: true
+  provider: script
+  script:
+    - /bin/sh ./deploy.sh
+  on:
+    tags: true

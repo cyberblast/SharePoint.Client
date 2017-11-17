@@ -4,7 +4,7 @@ sudo: false
 mono:
   - latest
 deploy:
-  skip_cleanup: false
+  skip_cleanup: true
   provider: script
   script:
     - /bin/sh ./deploy.sh

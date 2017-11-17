@@ -14,5 +14,6 @@ namespace cyberblast.SharePoint.Client {
         bool Authenticate();
         void Execute(Call action);
         void IterateItems(ClientContext ctx, string listName, CamlQuery query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals);
+        void IterateItems(string listName, CamlQuery query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals)
     }
 }

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>cyberblast.SharePoint.Client</id>
-    <version>1.0.0</version>
+    <version>$version$</version>
     <title>cyberblast.SharePoint.Client</title>
     <authors>cyberblast</authors>
     <owners>cyberblast</owners>
@@ -19,8 +19,8 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="SharePoint.Client\bin\Debug\Authentication.dll" target="lib\net45" />
-    <file src="SharePoint.Client\bin\Debug\SharePoint.Client.dll" target="lib\net45" />
-    <file src="Claims.WinForm\bin\Debug\Claims.WinForm.dll" target="lib\net45" />
+    <file src="SharePoint.Client\bin\Release\cyberblast.Authentication.dll" target="lib\net45" />
+    <file src="SharePoint.Client\bin\Release\cyberblast.SharePoint.Client.dll" target="lib\net45" />
+    <file src="Claims.WinForm\bin\Release\cyberblast.Claims.WinForm.dll" target="lib\net45" />
   </files>
 </package>

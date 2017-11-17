@@ -72,11 +72,15 @@ namespace ConsoleApp1 {
 ## Currently implemented Authenticators
 
 * DefaultAuthentication
+
   Authenticate using NTLM/Kerberos
   This one is also used when no Authenticator is specified
+  
 * TMGAuthentication
+
   Form based authentication against a TMG Gateway
+  
 * O365Authenticator
+
   Opens a browser window requesting for O365 credentials.
   Currently only working when using Windows Forms.
-  > Tip: You can save and reuse authentication cookies via `client.Cookies`

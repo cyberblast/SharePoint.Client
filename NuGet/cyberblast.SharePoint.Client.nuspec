@@ -10,17 +10,18 @@
     <projectUrl>https://github.com/cyberblast/SharePoint.Client</projectUrl>
     <iconUrl>https://avatars2.githubusercontent.com/u/33760031?s=64</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Adapter Library to communicate with on premise SharePoint 2013</description>
-    <releaseNotes>Some overall restructuring and added some QueryBuilder Functionalities</releaseNotes>
+    <description>Adapter Library to communicate with SharePoint 2013. CSOM wrapper: will install CSOM NuGet Package as well.</description>
+    <releaseNotes>Added nuget readme</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>SharePoint 15 2013 Client Adapter Library</tags>
+    <tags>SharePoint 15 2013 Client Adapter Library CSOM</tags>
     <dependencies>
       <dependency id="Microsoft.SharePoint.Client.Online.CSOM" version="15.0.4859.1003" />
     </dependencies>
   </metadata>
   <files>
-    <file src="Common\bin\Release\cyberblast.Common.dll" target="lib\net45" />
-    <file src="SharePoint.Client\bin\Release\cyberblast.SharePoint.Client.dll" target="lib\net45" />
-    <file src="Claims.WinForm\bin\Release\cyberblast.Claims.WinForm.dll" target="lib\net45" />
+    <file src="readme.txt" target="" />
+    <file src="..\Common\bin\Release\cyberblast.Common.dll" target="lib\net45" />
+    <file src="..\SharePoint.Client\bin\Release\cyberblast.SharePoint.Client.dll" target="lib\net45" />
+    <file src="..\Claims.WinForm\bin\Release\cyberblast.Claims.WinForm.dll" target="lib\net45" />
   </files>
 </package>

@@ -7,7 +7,7 @@ deploy:
   skip_cleanup: true
   provider: script
   script:
-    - /bin/sh ./deploy.sh
+    - /bin/sh ./travis.deploy.sh
   on:
     tags: true
 branches:

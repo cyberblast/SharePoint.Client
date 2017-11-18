@@ -120,5 +120,5 @@ void Callback(ListItem item) {
 
 ## Contact
 
-[Create an issue](https://github.com/cyberblast/SharePoint.Client/issues)
+[Create an issue](https://github.com/cyberblast/SharePoint.Client/issues)  
 [Send a mail](mailto://git@cyberblast.org)

@@ -4,10 +4,10 @@
 
 [![Build Status](https://travis-ci.org/cyberblast/SharePoint.Client.svg?branch=master)](https://travis-ci.org/cyberblast/SharePoint.Client)
 
-[Nuget Package](https://www.nuget.org/packages/cyberblast.SharePoint.Client)  
-[Sample Usage](#sample-usage)  
+[NuGet package](https://www.nuget.org/packages/cyberblast.SharePoint.Client)  
+[Sample usage](#sample-usage)  
 [Features](#features)  
-[Currently implemented Authenticators](#currently-implemented-authenticators)  
+[Authenticators](#currently-implemented-authenticators)  
 
 ## Sample usage
 

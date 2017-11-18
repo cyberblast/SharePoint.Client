@@ -67,7 +67,7 @@ namespace ConsoleApp1 {
                 new QueryBuilder.Value(7, FieldType.Number));
             var query = QueryBuilder.Query(filter, ROW_LIMIT);
 			
-			// C#7 Syntax. But any fitting delegate will do...
+            // C#7 Syntax. But any fitting delegate will do...
             void Callback(ListItem item) { 
                 Console.WriteLine(item.Id);
             }

@@ -2,29 +2,14 @@
 using System.Net;
 
 namespace cyberblast.SharePoint.Client.Authentication {
-    public class DefaultAuthenticator : IAuthenticator
-    {
+    public class DefaultAuthenticator : IAuthenticator {
         public event ExceptionHandler OnException = (sender, args) => { };
-        public bool _ThrowExceptions = false;
 
-        public NetworkCredential Credentials
-        {
-            get;
-            set;
-        }
-        public string Url
-        {
-            get;
-            set;
-        }
-        public bool ThrowExceptions
-        {
-            get { return _ThrowExceptions; }
-            set { _ThrowExceptions = value; }
-        }        
+        public NetworkCredential Credentials { get; set; }
+        public string Url { get; set; }
+        public bool ThrowExceptions { get; set; }
 
-        public CookieCollection Authenticate()
-        {
+        public CookieCollection Authenticate() {
             return new CookieCollection();
         }
     }

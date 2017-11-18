@@ -7,6 +7,7 @@
 [Nuget Package](https://www.nuget.org/packages/cyberblast.SharePoint.Client)
 
 ## Sample Usage
+
 ```C#
 using System;
 using cyberblast.SharePoint.Client;
@@ -27,7 +28,7 @@ namespace ConsoleApp1 {
 }
 ```
 
-## Options
+## Features
 
 * Enter Name/Password 
 ```C#
@@ -45,7 +46,6 @@ client.Authenticate();
 
 * Create CAML queries & iterate list items
 ```C#
-using System;
 using cyberblast.SharePoint.Client;
 using cyberblast.SharePoint.Client.Authentication;
 using Microsoft.SharePoint.Client;

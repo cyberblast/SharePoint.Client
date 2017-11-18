@@ -5,40 +5,32 @@ using System.Net;
 using System.Text;
 
 namespace cyberblast.SharePoint.Client.Authentication {
-    public abstract class CookieAuthenticator : IAuthenticator
-    {
+    public abstract class CookieAuthenticator : IAuthenticator {
         public event ExceptionHandler OnException = (sender, args) => { };
-        public bool _ThrowExceptions = false;
 
         #region abstract Properties
 
-        protected abstract string UserAgent
-        {
+        protected abstract string UserAgent {
             get;
         }
 
-        protected abstract string ContentType
-        {
+        protected abstract string ContentType {
             get;
         }
 
-        protected abstract string ConnectionPath
-        {
+        protected abstract string ConnectionPath {
             get;
         }
 
-        protected abstract string ValidationPath
-        {
+        protected abstract string ValidationPath {
             get;
         }
 
-        protected abstract string UserNameParam
-        {
+        protected abstract string UserNameParam {
             get;
         }
 
-        protected abstract string PasswordParam
-        {
+        protected abstract string PasswordParam {
             get;
         }
 
@@ -46,101 +38,70 @@ namespace cyberblast.SharePoint.Client.Authentication {
 
         #region Properties
 
-        public NetworkCredential Credentials
-        {
-            get;
-            set;
-        }
+        public NetworkCredential Credentials { get; set; }
 
-        public string Url
-        {
-            get;
-            set;
-        }
+        public string Url { get; set; }
 
-        public bool ThrowExceptions
-        {
-            get { return _ThrowExceptions; }
-            set { _ThrowExceptions = value; }
-        }
+        public bool ThrowExceptions { get; set; }
+        
+        internal CookieCollection Cookies { get; set; }
 
-        CookieCollection _Cookies;
-        internal CookieCollection Cookies
-        {
-            get { return _Cookies; }
-        }
-
-        protected string ConnectUrl
-        {
-            get
-            {
+        protected string ConnectUrl {
+            get {
                 if (Uri.TryCreate(new Uri(Url), ConnectionPath, out Uri connectUri))
                     return connectUri.AbsoluteUri;
                 else return Url + ConnectionPath;
             }
         }
 
-        protected string ValidationUrl
-        {
-            get
-            {
+        protected string ValidationUrl {
+            get {
                 if (Uri.TryCreate(new Uri(Url), ValidationPath, out Uri validationUri))
                     return validationUri.AbsoluteUri;
                 else return Url + ValidationPath;
             }
         }
 
-        protected string[] Queries
-        {
-            get;
-            set;
-        }
+        protected string[] Queries { get; set; }
 
         #endregion
 
-        public CookieAuthenticator(){}
+        public CookieAuthenticator() { }
 
         /*
-        internal CookieAuthenticator(string url, NetworkCredential credentials)
-        {
+        internal CookieAuthenticator(string url, NetworkCredential credentials) {
             this.Url = url;
             this.Credentials = credentials;
         }
          */
 
-        public CookieCollection Authenticate()
-        {
-            try
-            {
+        public CookieCollection Authenticate() {
+            try {
                 this.Connect();
                 this.ValidateCredentials();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 OnException(this, new ExceptionArgs {
                     Exception = ex
                 });
                 if (ThrowExceptions) throw;
             }
-            return _Cookies;
+            return Cookies;
         }
 
-        private void Connect()
-        {
+        private void Connect() {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ConnectUrl);
             request.CookieContainer = new CookieContainer();
             request.UserAgent = this.UserAgent;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                _Cookies = response.Cookies;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse()) {
+                Cookies = response.Cookies;
                 string query = response.ResponseUri.Query;
                 Queries = query.Substring(query.LastIndexOf('?') + 1).Split(new string[] { "&" }, StringSplitOptions.RemoveEmptyEntries);
             }
         }
 
-        private void ValidateCredentials()
-        {
+        private void ValidateCredentials() {
             string postData = string.Empty;
             postData += string.Format("{0}={2}&{1}={3}&{4}",
                 UserNameParam,
@@ -155,22 +116,19 @@ namespace cyberblast.SharePoint.Client.Authentication {
             postRequest.AllowAutoRedirect = true;
 
             postRequest.CookieContainer = new CookieContainer();
-            foreach (Cookie cookie in this.Cookies)
-            {
+            foreach (Cookie cookie in this.Cookies) {
                 postRequest.CookieContainer.Add(cookie);
             }
 
             ASCIIEncoding encoding = new ASCIIEncoding();
             byte[] data = encoding.GetBytes(postData);
             postRequest.ContentLength = data.Length;
-            using (Stream newStream = postRequest.GetRequestStream())
-            {
+            using (Stream newStream = postRequest.GetRequestStream()) {
                 newStream.Write(data, 0, data.Length);
             }
 
-            using (HttpWebResponse response = (HttpWebResponse)postRequest.GetResponse())
-            {
-                _Cookies = response.Cookies;
+            using (HttpWebResponse response = (HttpWebResponse)postRequest.GetResponse()) {
+                Cookies = response.Cookies;
             }
         }
     }

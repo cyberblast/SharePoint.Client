@@ -2,8 +2,7 @@
 using System.Net;
 
 namespace cyberblast.SharePoint.Client {
-    public interface ISPClient
-    {
+    public interface ISPClient {
         event ExceptionHandler OnException;
         NetworkCredential Credentials { get; set; }
         bool ThrowExceptions { get; set; }

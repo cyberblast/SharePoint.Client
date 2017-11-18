@@ -96,7 +96,7 @@ void Callback(ListItem item) {
 
 * DefaultAuthentication
 
-  Authenticate using NTLM/Kerberos  
+  Authenticate using Integrated Windows authentication (NTLM/Kerberos)  
   This one is also used when no Authenticator is specified
   
 * TMGAuthentication

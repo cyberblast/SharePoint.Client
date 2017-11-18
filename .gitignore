@@ -1,8 +1,8 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
+﻿
+*/pkg/
+*/pkgobj/
 */bin/
 */obj/
 .vs/
 packages/
+*.user

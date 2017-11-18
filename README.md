@@ -8,6 +8,7 @@
 [Sample usage](#sample-usage)  
 [Features](#features)  
 [Authenticators](#currently-implemented-authenticators)  
+[Contact](#contact)  
 
 ## Sample usage
 
@@ -116,3 +117,8 @@ void Callback(ListItem item) {
 * (CookieAuthenticator)
   
   Abstract for implementing form based Authenticators
+
+## Contact
+
+[Create an issue](https://github.com/cyberblast/SharePoint.Client/issues)
+[Send a mail](mailto://git@cyberblast.org)

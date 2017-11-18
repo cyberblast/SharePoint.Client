@@ -1,4 +1,4 @@
-﻿# cyberblast SharePoint Client
+﻿# cyberblast.SharePoint.Client
 
 <a href="https://github.com/cyberblast" border="0"><img align="right" title="logo" src="https://avatars2.githubusercontent.com/u/33760031?s=64"></a>
 
@@ -6,7 +6,7 @@
 
 [Nuget Package](https://www.nuget.org/packages/cyberblast.SharePoint.Client)
 
-## Sample Usage
+## Sample usage
 
 ```C#
 using System;
@@ -17,6 +17,7 @@ namespace ConsoleApp1 {
 
             ISPClient client = new SPClient("http://yourSharePointUrl");
             client.Execute(ctx => {
+                // now common CSOM
                 var web = ctx.Web;
                 ctx.Load(web, w => w.Title);
                 ctx.ExecuteQuery();
@@ -29,7 +30,7 @@ namespace ConsoleApp1 {
 
 ## Features
 
-* Set Name/Password 
+* Set name/password 
 ```C#
 ISPClient client = new SPClient(
     "http://yourSharePointUrl", 
@@ -42,6 +43,7 @@ ISPClient client = new SPClient(
 ```C#
 using cyberblast.SharePoint.Client.Authentication;
 [...]
+// using TMGAuthenticator (see below for a list of implemented Authenticators)
 ISPClient client = new SPClient<TMGAuthenticator>(
     "http://yourSharePointUrl", 
     "domain", 
@@ -50,7 +52,7 @@ ISPClient client = new SPClient<TMGAuthenticator>(
 client.Authenticate();
 ```
 
-* Create CAML queries & iterate list items
+* CAML query builder & iterate list items
 ```C#
 using cyberblast.SharePoint.Client;
 using cyberblast.SharePoint.Client.Authentication;
@@ -73,13 +75,14 @@ namespace ConsoleApp1 {
             }
 
             client.Execute(ctx => 
+                // ClientContext Extension
                 ctx.IterateItems("Documents", query, Callback));
         }
     }
 }
 ```
 
-* Retrieve Field Values
+* Retrieve and convert field values
 ```C#
 void Callback(ListItem item) {
     int number = item.GetValue<int>("numberField");
@@ -98,10 +101,15 @@ void Callback(ListItem item) {
   
 * TMGAuthentication
 
-  Form based authentication against a TMG Gateway
+  Form based authentication against a TMG Gateway  
+  Inherits CookieAuthenticator
   
 * O365Authenticator
 
   Opens a browser window requesting for O365 credentials.  
   Currently only working when using Windows Forms.  
   Contained in separate namespace `cyberblast.Claims.WinForm` 
+
+* (CookieAuthenticator)
+  
+  Abstract for implementing form based Authenticators

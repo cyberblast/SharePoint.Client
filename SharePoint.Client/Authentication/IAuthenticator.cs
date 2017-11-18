@@ -1,8 +1,7 @@
-﻿using System;
+﻿using cyberblast.Common;
 using System.Net;
 
-namespace cyberblast.Authentication {
-    public delegate void ExceptionHandler(Exception e);
+namespace cyberblast.SharePoint.Client.Authentication {
     public interface IAuthenticator 
     {
         event ExceptionHandler OnException;

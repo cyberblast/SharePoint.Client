@@ -1,12 +1,13 @@
-﻿using System;
+﻿using cyberblast.Common;
+using System;
 using System.IO;
 using System.Net;
 using System.Text;
 
-namespace cyberblast.Authentication {
+namespace cyberblast.SharePoint.Client.Authentication {
     public abstract class CookieAuthenticator : IAuthenticator
     {
-        public event ExceptionHandler OnException = (e) => { };
+        public event ExceptionHandler OnException = (sender, args) => { };
         public bool _ThrowExceptions = false;
 
         #region abstract Properties
@@ -116,7 +117,9 @@ namespace cyberblast.Authentication {
             }
             catch (Exception ex)
             {
-                OnException(ex);
+                OnException(this, new ExceptionArgs {
+                    Exception = ex
+                });
                 if (ThrowExceptions) throw;
             }
             return _Cookies;

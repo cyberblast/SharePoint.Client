@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/cyberblast/SharePoint.Client/master/cyberblast64.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Adapter Library to communicate with on premise SharePoint 2013</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Some overall restructuring and added some QueryBuilder Functionalities (still incomplete)</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SharePoint 15 2013 Client Adapter Library</tags>
     <dependencies>
@@ -19,7 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="SharePoint.Client\bin\Release\cyberblast.Authentication.dll" target="lib\net45" />
+    <file src="Common\bin\Release\cyberblast.Common.dll" target="lib\net45" />
     <file src="SharePoint.Client\bin\Release\cyberblast.SharePoint.Client.dll" target="lib\net45" />
     <file src="Claims.WinForm\bin\Release\cyberblast.Claims.WinForm.dll" target="lib\net45" />
   </files>

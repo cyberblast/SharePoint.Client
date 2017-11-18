@@ -1,8 +1,7 @@
-﻿using cyberblast.Authentication;
+﻿using cyberblast.Common;
+using cyberblast.SharePoint.Client.Authentication;
 using Microsoft.SharePoint.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Net;
 
 namespace cyberblast.SharePoint.Client {
@@ -34,7 +33,7 @@ namespace cyberblast.SharePoint.Client {
         public bool FormsBasedAuthAccepted { get; set; } = true;
         public CookieCollection Cookies { get; set; }
 
-        public event ExceptionHandler OnException = (e) => { };
+        public event ExceptionHandler OnException = (sender, args) => { };
         
         /// <summary>
         /// Erzeugt einen SharePoint Client mit definierten Credentials zur Authentifizierung
@@ -66,7 +65,7 @@ namespace cyberblast.SharePoint.Client {
                 Url = _url,
                 Credentials = Credentials ?? CredentialCache.DefaultNetworkCredentials
             };
-            authenticator.OnException += (e) => OnException(e);
+            authenticator.OnException += (sender, args) => OnException(sender, args);
             Cookies = authenticator.Authenticate();
         }
 
@@ -131,67 +130,13 @@ namespace cyberblast.SharePoint.Client {
                     _State = State.AuthenticationFailed;
                 else if (e.Status == WebExceptionStatus.NameResolutionFailure || e.Status == WebExceptionStatus.ConnectFailure || e.Status == WebExceptionStatus.ConnectionClosed)
                     _State = State.ConnectionFailed;
-                OnException(e);
+                OnException(this, new ExceptionArgs {
+                    Exception = e
+                });
                 if (ThrowExceptions) throw;
             }
         }
-        public void IterateItems(ClientContext ctx, string listName, CamlQuery query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
-            List list = ctx.Web.Lists.GetByTitle(listName);
-            query.ListItemCollectionPosition = null;
-            ListItemCollection items;
-            do {
-                items = list.GetItems(query);
 
-                ctx.Load(items, retrievals);
-                ctx.ExecuteQuery();
-
-                query.ListItemCollectionPosition = items.ListItemCollectionPosition;
-                if (items != null && items.Count > 0) {
-                    using (IEnumerator<ListItem> listItemEnumerator = items.GetEnumerator()) {
-                        while (listItemEnumerator.MoveNext()) {
-                            iterator(listItemEnumerator.Current);
-                        }
-                    }
-                }
-            }
-            while (query.ListItemCollectionPosition != null);
-
-            items = null;
-            list = null;
-        }
-        public void IterateItems(string listName, CamlQuery query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
-            Execute(ctx => IterateItems(ctx, listName, query, iterator, retrievals));
-        }
-        public void IterateItems(ClientContext ctx, string listName, QueryBuilder.Query query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
-            List list = ctx.Web.Lists.GetByTitle(listName);
-            CamlQuery caml = new CamlQuery(){
-                ViewXml = query
-            };
-            caml.ListItemCollectionPosition = null;
-            ListItemCollection items;
-            do {
-                items = list.GetItems(caml);
-
-                ctx.Load(items, retrievals);
-                ctx.ExecuteQuery();
-
-                caml.ListItemCollectionPosition = items.ListItemCollectionPosition;
-                if (items != null && items.Count > 0) {
-                    using (IEnumerator<ListItem> listItemEnumerator = items.GetEnumerator()) {
-                        while (listItemEnumerator.MoveNext()) {
-                            iterator(listItemEnumerator.Current);
-                        }
-                    }
-                }
-            }
-            while (caml.ListItemCollectionPosition != null);
-
-            items = null;
-            list = null;
-        }
-        public void IterateItems(string listName, QueryBuilder.Query query, ItemMethod iterator, params Expression<Func<ListItemCollection, object>>[] retrievals) {
-            Execute(ctx => IterateItems(ctx, listName, query, iterator, retrievals));
-        }
         private void ExecutingWebRequest(object sender, WebRequestEventArgs e) {
             if (!FormsBasedAuthAccepted)
                 e.WebRequestExecutor.WebRequest.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");

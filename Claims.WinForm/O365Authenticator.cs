@@ -1,11 +1,12 @@
-﻿using cyberblast.Authentication;
+﻿using cyberblast.Common;
+using cyberblast.SharePoint.Client.Authentication;
 using System;
 using System.Net;
 
 namespace cyberblast.Claims.WinForm {
     public class O365Authenticator : IAuthenticator
     {
-        public event ExceptionHandler OnException = (e) => { };
+        public event ExceptionHandler OnException = (sender, args) => { };
 
         public bool _ThrowExceptions = false;
         public bool ThrowExceptions
@@ -44,7 +45,9 @@ namespace cyberblast.Claims.WinForm {
             }
             catch(Exception ex)
             {
-                OnException(ex);
+                OnException(this, new ExceptionArgs {
+                    Exception = ex
+                });
                 if (ThrowExceptions) throw;
             }
             return _Cookies;

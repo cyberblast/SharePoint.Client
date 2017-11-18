@@ -100,6 +100,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\CookieAuthenticator.cs" />
+    <Compile Include="Authentication\DefaultAuthenticator.cs" />
+    <Compile Include="Authentication\IAuthenticator.cs" />
+    <Compile Include="Authentication\TMGAuthenticator.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ISPClient.cs" />
@@ -111,9 +115,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Authentication\Authentication.csproj">
-      <Project>{60e6f87a-7cef-4b51-a74a-36c303b6f841}</Project>
-      <Name>Authentication</Name>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2a472848-d8e6-48ab-8b22-f0932b527e30}</Project>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

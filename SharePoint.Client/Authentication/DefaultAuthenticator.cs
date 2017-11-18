@@ -1,9 +1,10 @@
-﻿using System.Net;
+﻿using cyberblast.Common;
+using System.Net;
 
-namespace cyberblast.Authentication {
+namespace cyberblast.SharePoint.Client.Authentication {
     public class DefaultAuthenticator : IAuthenticator
     {
-        public event ExceptionHandler OnException = (e) => { };
+        public event ExceptionHandler OnException = (sender, args) => { };
         public bool _ThrowExceptions = false;
 
         public NetworkCredential Credentials

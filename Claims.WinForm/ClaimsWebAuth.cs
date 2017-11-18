@@ -234,12 +234,11 @@ namespace cyberblast.Claims.WinForm {
             GC.SuppressFinalize(this);
         }
 
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
                 if (this.webBrowser != null) this.webBrowser.Dispose();
-
                 if (this.DisplayLoginForm != null) this.DisplayLoginForm.Dispose();
             }
         }

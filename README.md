@@ -47,6 +47,8 @@ client.Authenticate();
 ```C#
 using System;
 using cyberblast.SharePoint.Client;
+using cyberblast.SharePoint.Client.Authentication;
+using Microsoft.SharePoint.Client;
 namespace ConsoleApp1 {
     class Program {
         const int ROW_LIMIT = 100;
@@ -55,15 +57,16 @@ namespace ConsoleApp1 {
             client.Authenticate();
 
             var filter = QueryBuilder.Eq(
-                QueryBuilder.Static(7, FieldType.Number),
-                QueryBuilder.FieldRef("Id"));
+                new QueryBuilder.Field("Id"),
+                new QueryBuilder.Value(7, FieldType.Number));
             var query = QueryBuilder.Query(filter, ROW_LIMIT);
 
             void Callback(ListItem item) {
                 Console.WriteLine(item.Id);
             }
 
-            client.IterateItems("Documents", query, Callback);
+            client.Execute(ctx => 
+                ctx.IterateItems("Documents", query, Callback));
         }
     }
 }

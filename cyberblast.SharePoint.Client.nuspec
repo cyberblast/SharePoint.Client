@@ -8,9 +8,9 @@
     <owners>cyberblast</owners>
     <licenseUrl>https://raw.githubusercontent.com/cyberblast/SharePoint.Client/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/cyberblast/SharePoint.Client</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/cyberblast/SharePoint.Client/master/cyberblast64.png</iconUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/33760031?s=64</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Adapter Library to communicate with on premise SharePoint 2013</description>
+    <description>[Beta state] Adapter Library to communicate with on premise SharePoint 2013</description>
     <releaseNotes>Some overall restructuring and added some QueryBuilder Functionalities (still incomplete)</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SharePoint 15 2013 Client Adapter Library</tags>

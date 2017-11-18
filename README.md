@@ -72,6 +72,14 @@ namespace ConsoleApp1 {
 }
 ```
 
+* Retrieve Field Values
+```C#
+void Callback(ListItem item) {
+    int number = item.GetValue<int>("numberField");
+    string author = item.GetValue<FieldUserValue, string>("Author", (fieldUserValue) => fieldUserValue.LookupValue);
+}
+```
+
 ## Currently implemented Authenticators
 
 * DefaultAuthentication

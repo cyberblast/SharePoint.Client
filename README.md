@@ -59,19 +59,16 @@ namespace ConsoleApp1 {
     class Program {
         const int ROW_LIMIT = 100;
         static void Main(string[] args) {
-            ISPClient client = new SPClient<TMGAuthenticator>(
-                "http://yourSharePointUrl", 
-                "domain", 
-                "loginName", 
-                "password");
-            client.Authenticate();
+
+            ISPClient client = new SPClient("http://yourSharePointUrl");
 
             var filter = QueryBuilder.Equals(
                 new QueryBuilder.Field("Id"),
                 new QueryBuilder.Value(7, FieldType.Number));
             var query = QueryBuilder.Query(filter, ROW_LIMIT);
-
-            void Callback(ListItem item) {
+			
+			// C#7 Syntax. But any fitting delegate will do...
+            void Callback(ListItem item) { 
                 Console.WriteLine(item.Id);
             }
 

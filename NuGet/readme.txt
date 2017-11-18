@@ -1,5 +1,5 @@
 
 cyberblast SharePoint Client
 
-For information, please visit: 
+For information, questions, source code - please visit: 
 https://github.com/cyberblast/SharePoint.Client 

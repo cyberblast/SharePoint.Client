@@ -1,12 +1,12 @@
 ﻿# cyberblast SharePoint Client
 
-<a href="https://github.com/cyberblast" border="0"><img align="right" title="Open Collaboration Society" src="https://raw.githubusercontent.com/cyberblast/SharePoint.Client/master/cyberblast64.png"></a>
+<a href="https://github.com/cyberblast" border="0"><img align="right" title="logo" src="https://avatars2.githubusercontent.com/u/33760031?s=64"></a>
 
 [![Build Status](https://travis-ci.org/cyberblast/SharePoint.Client.svg?branch=master)](https://travis-ci.org/cyberblast/SharePoint.Client)
 
 [Nuget Package](https://www.nuget.org/packages/cyberblast.SharePoint.Client)
 
-## Sample Usage: 
+## Sample Usage
 ```C#
 using System;
 using cyberblast.SharePoint.Client;
@@ -37,7 +37,7 @@ client.Authenticate();
 
 * Use different authentication procedures
 ```C#
-using cyberblast.Authentication;
+using cyberblast.SharePoint.Client.Authentication;
 [...]
 ISPClient client = new SPClient<TMGAuthenticator>("http://yourSharePointUrl", "domain", "loginName", "password");
 client.Authenticate();

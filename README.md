@@ -33,9 +33,9 @@ namespace ConsoleApp1 {
 ```C#
 ISPClient client = new SPClient(
     "http://yourSharePointUrl", 
-	"domain", 
-	"loginName", 
-	"password");
+    "domain", 
+    "loginName", 
+    "password");
 ```
 
 * Use different authentication procedures
@@ -44,9 +44,9 @@ using cyberblast.SharePoint.Client.Authentication;
 [...]
 ISPClient client = new SPClient<TMGAuthenticator>(
     "http://yourSharePointUrl", 
-	"domain", 
-	"loginName", 
-	"password");
+    "domain", 
+    "loginName", 
+    "password");
 client.Authenticate();
 ```
 
@@ -72,10 +72,7 @@ namespace ConsoleApp1 {
             var query = QueryBuilder.Query(filter, ROW_LIMIT);
 
             void Callback(ListItem item) {
-                int number = item.GetValue<int>("numberField");
-                string author = item.GetValue<FieldUserValue, string>(
-                    "Author", 
-                    (fieldUserValue) => fieldUserValue.LookupValue);
+                Console.WriteLine(item.Id);
             }
 
             client.Execute(ctx => 
@@ -89,7 +86,9 @@ namespace ConsoleApp1 {
 ```C#
 void Callback(ListItem item) {
     int number = item.GetValue<int>("numberField");
-    string author = item.GetValue<FieldUserValue, string>("Author", (fieldUserValue) => fieldUserValue.LookupValue);
+    string author = item.GetValue<FieldUserValue, string>(
+        "Author", 
+        (fieldUserValue) => fieldUserValue.LookupValue);
 }
 ```
 

@@ -26,19 +26,75 @@ namespace cyberblast.SharePoint.Client
             return string.Format("<And>{0}{1}</And>", condition1, condition2);
         }
 
-        public static Expression Geq(Field a, Value b) {
-            return string.Format(@"<Geq>{0}{1}</Geq>", a, b);
+        public static Expression Equals(Field field, Value value) {
+            return string.Format(@"<Eq>{0}{1}</Eq>", field, value);
         }
-        public static Expression Eq(Field a, Value b) {
-            return string.Format(@"<Eq>{0}{1}</Eq>", a, b);
+        public static Expression GreaterThan(Field field, Value value) {
+            return string.Format(@"<Gt>{0}{1}</Gt>", field, value);
+        }
+        public static Expression GreaterOrEqual(Field field, Value value) {
+            return string.Format(@"<Geq>{0}{1}</Geq>", field, value);
+        }
+        public static Expression LesserThan(Field field, Value value) {
+            return string.Format(@"<Lt>{0}{1}</Lt>", field, value);
+        }
+        public static Expression LesserOrEqual(Field field, Value value) {
+            return string.Format(@"<Leq>{0}{1}</Leq>", field, value);
+        }
+        public static Expression NotEqual(Field field, Value value) {
+            return string.Format(@"<Neq>{0}{1}</Neq>", field, value);
+        }
+        public static Expression BeginsWith(Field field, Value value) {
+            return string.Format(@"<BeginsWith>{0}{1}</BeginsWith>", field, value);
+        }
+        /// <summary>
+        /// Specifies whether the value of a list item for the field specified by the FieldRef element is equal to one of the values specified by the Values element.
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Expression In(Field field, params Value[] value) {
+            string values = string.Join<Value>(string.Empty, value);
+            return string.Format(@"<In>{0}<Values>{1}</Values></In>", field, values);
+        }
+        /// <summary>
+        /// Searches for a string anywhere within a column that holds Text or Note field type values.
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Expression Contains(Field field, Value value) {
+            return string.Format(@"<Contains>{0}{1}</Contains>", field, value);
+        }
+        /// <summary>
+        /// If the specified field is a Lookup field that allows multiple values, specifies that the Value element is included in the list item for the field that is specified by the FieldRef element.
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Expression Includes(Field field, Value value) {
+            return string.Format(@"<Includes>{0}{1}</Includes>", field, value);
+        }
+        /// <summary>
+        /// If the specified field is a Lookup field that allows multiple values, specifies that the Value element is excluded from the list item for the field that is specified by the FieldRef element.
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Expression NotIncludes(Field field, Value value) {
+            return string.Format(@"<NotIncludes>{0}{1}</NotIncludes>", field, value);
         }
 
-        public static Expression IsNullOrEmpty(Field field, FieldType type) {
+        public static Expression Null(Field field) {
+            return string.Format(@"<IsNull>{0}</IsNull>", field);
+        }
+        public static Expression NullOrEmpty(Field field, FieldType type) {
             return string.Format(@"<Or><IsNull>{0}</IsNull><Eq>{0}<Value Type=""{1}""></Value></Eq></Or>", field, type.ToString());
         }
-
-        // Add more Expressions here...
-
+        public static Expression NotNull(Field field) {
+            return string.Format(@"<IsNotNull>{0}</IsNotNull>", field);
+        }
+        
         #endregion
 
         #region Privates

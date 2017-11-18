@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/cyberblast/SharePoint.Client</projectUrl>
     <iconUrl>https://avatars2.githubusercontent.com/u/33760031?s=64</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>[Beta state] Adapter Library to communicate with on premise SharePoint 2013</description>
-    <releaseNotes>Some overall restructuring and added some QueryBuilder Functionalities (still incomplete)</releaseNotes>
+    <description>Adapter Library to communicate with on premise SharePoint 2013</description>
+    <releaseNotes>Some overall restructuring and added some QueryBuilder Functionalities</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SharePoint 15 2013 Client Adapter Library</tags>
     <dependencies>

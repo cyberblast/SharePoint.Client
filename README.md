@@ -108,7 +108,7 @@ void Callback(ListItem item) {
   Form based authentication against a TMG Gateway  
   Inherits CookieAuthenticator
   
-* O365Authenticator
+* Claims.WinForm.O365Authenticator
 
   Opens a browser window requesting for O365 credentials.  
   Currently only working when using Windows Forms.  

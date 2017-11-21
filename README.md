@@ -89,6 +89,7 @@ namespace ConsoleApp1 {
 * Retrieve and convert field values
 ```C#
 void Callback(ListItem item) {
+    // ListItem Extension
     int number = item.GetValue<int>("numberField");
     string author = item.GetValue<FieldUserValue, string>(
         "Author", 

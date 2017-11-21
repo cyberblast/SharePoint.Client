@@ -119,6 +119,9 @@ void Callback(ListItem item) {
   
   Abstract for implementing form based Authenticators
 
+I know, there is a lot missing regardig authentication. I will add things as I need them. 
+If YOU have some additions at hand, I'd be greatful for your additions (merge requests).
+
 ## Contact
 
 [Create an issue](https://github.com/cyberblast/SharePoint.Client/issues)  

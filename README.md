@@ -8,7 +8,8 @@
 [Authenticators](#currently-implemented-authenticators)  
 [Contact](#contact)  
 
-Please use this one using NuGet. Simply search for "cyberblast".
+Please use this one using NuGet. Simply search for "cyberblast". 
+A successful release will atomatically update the nuget package. 
 
 ## Sample usage
 

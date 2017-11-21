@@ -8,6 +8,8 @@
 [Authenticators](#currently-implemented-authenticators)  
 [Contact](#contact)  
 
+Please use this one using NuGet. Simply search for "cyberblast".
+
 ## Sample usage
 
 ```C#

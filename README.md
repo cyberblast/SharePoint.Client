@@ -69,6 +69,8 @@ namespace ConsoleApp1 {
             var filter = QueryBuilder.Equals(
                 new QueryBuilder.Field("Id"),
                 new QueryBuilder.Value(7, FieldType.Number));
+            // ROW_LIMIT defines buffer amount of items to get per internal call.
+	    // The iterator will always iterate ALL items.
             var query = QueryBuilder.Query(filter, ROW_LIMIT);
 			
             // C#7 Syntax. But any fitting delegate will do...

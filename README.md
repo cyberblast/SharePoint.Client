@@ -64,7 +64,6 @@ using cyberblast.SharePoint.Client.Authentication;
 using Microsoft.SharePoint.Client;
 namespace ConsoleApp1 {
     class Program {
-        const int ROW_LIMIT = 100;
         static void Main(string[] args) {
 
             ISPClient client = new SPClient("http://yourSharePointUrl");
@@ -72,9 +71,7 @@ namespace ConsoleApp1 {
             var filter = QueryBuilder.Equals(
                 new QueryBuilder.Field("Id"),
                 new QueryBuilder.Value(7, FieldType.Number));
-            // ROW_LIMIT defines buffer amount of items to get per internal call.
-	    // The iterator will always iterate ALL items.
-            var query = QueryBuilder.Query(filter, ROW_LIMIT);
+            var query = QueryBuilder.Query(filter);
 			
             // C#7 Syntax. But any fitting delegate will do...
             void Callback(ListItem item) { 

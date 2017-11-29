@@ -2,6 +2,7 @@
 using cyberblast.SharePoint.Client.Authentication;
 using Microsoft.SharePoint.Client;
 using System;
+using System.IO;
 using System.Net;
 
 namespace cyberblast.SharePoint.Client {
@@ -120,6 +121,19 @@ namespace cyberblast.SharePoint.Client {
                 });
                 if (ThrowExceptions) throw;
             }
+        }
+        
+        public void GetFileStream(string serverRelativeUrl, StreamCall handler, ClientContext ctx)
+        {
+            using (FileInformation remoteFile = Microsoft.SharePoint.Client.File.OpenBinaryDirect(ctx, serverRelativeUrl)) { 
+                handler(remoteFile.Stream);
+            }
+        }
+        public void GetFileStream(string serverRelativeUrl, StreamCall handler)
+        {
+            Execute(ctx => {
+                GetFileStream(serverRelativeUrl, handler, ctx);
+            });
         }
 
         private void ExecutingWebRequest(object sender, WebRequestEventArgs e) {

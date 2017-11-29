@@ -1,4 +1,5 @@
 ﻿using cyberblast.Common;
+using Microsoft.SharePoint.Client;
 using System.Net;
 
 namespace cyberblast.SharePoint.Client {
@@ -10,5 +11,7 @@ namespace cyberblast.SharePoint.Client {
         CookieCollection Cookies { get; set; }
         bool Authenticate();
         void Execute(Call action);
+        void GetFileStream(string serverRelativeUrl, StreamCall handler, ClientContext ctx);
+        void GetFileStream(string serverRelativeUrl, StreamCall handler);
     }
 }

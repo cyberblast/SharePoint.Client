@@ -41,8 +41,11 @@ namespace cyberblast.SharePoint.Client {
                 return condition1;
             return string.Format("<And>{0}{1}</And>", condition1, condition2);
         }
-
+        [Obsolete("Please use '.Equal' instead! 'Equals' is incompatible for use with 'using static QueryBuilder'!", false)]
         public static Expression Equals(Field field, Value value) {
+            return string.Format(@"<Eq>{0}{1}</Eq>", field, value);
+        }
+        public static Expression Equal(Field field, Value value) {
             return string.Format(@"<Eq>{0}{1}</Eq>", field, value);
         }
         public static Expression GreaterThan(Field field, Value value) {

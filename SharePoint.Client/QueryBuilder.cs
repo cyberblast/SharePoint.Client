@@ -1,11 +1,10 @@
 ﻿using Microsoft.SharePoint.Client;
 using System;
 
-namespace cyberblast.SharePoint.Client
-{
-    public static class QueryBuilder
-    {
+namespace cyberblast.SharePoint.Client {
+    public static class QueryBuilder {
         const int ROW_LIMIT = 300;
+
         /// <summary>
         /// Create a CAML query
         /// </summary>
@@ -13,8 +12,7 @@ namespace cyberblast.SharePoint.Client
         /// <param name="rowlimit">amount of items to retrieve per internal call.</param>
         /// <param name="orderByFields">Sort order of items</param>
         /// <returns>CAML query string</returns>
-        public static QueryExpression Query(Expression filter, int rowlimit, params Order[] orderByFields)
-        {
+        public static QueryExpression Query(Expression filter, int rowlimit, params Order[] orderByFields) {
             return string.Format("<View><Query>{0}{1}</Query><RowLimit>{2}</RowLimit></View>", Where(filter), OrderBy(orderByFields), rowlimit);
         }
         /// <summary>

@@ -123,19 +123,29 @@ namespace cyberblast.SharePoint.Client {
             }
         }
         
-        public void GetFileStream(string serverRelativeUrl, StreamCall handler, ClientContext ctx)
-        {
-            using (FileInformation remoteFile = Microsoft.SharePoint.Client.File.OpenBinaryDirect(ctx, serverRelativeUrl)) { 
-                handler(remoteFile.Stream);
-            }
+        public void GetFileStream(string serverRelativeUrl, StreamCall handler, ClientContext ctx = null) {
+            void GetStream(ClientContext c){
+                using (FileInformation remoteFile = Microsoft.SharePoint.Client.File.OpenBinaryDirect(c, serverRelativeUrl)) {
+                    handler(remoteFile.Stream);
+                }
+            };
+            if (ctx == null) Execute(GetStream);
+            else GetStream(ctx);
         }
-        public void GetFileStream(string serverRelativeUrl, StreamCall handler)
-        {
-            Execute(ctx => {
-                GetFileStream(serverRelativeUrl, handler, ctx);
-            });
-        }
+        public byte[] GetFileBytes(string serverRelativeUrl, ClientContext ctx = null) {
+            byte[] bits = null;
 
+            void GetBytes(Stream stream) {
+                using (MemoryStream temp = new MemoryStream()) {
+                    stream.CopyTo(temp, 16384); // 16KB buffer
+                    bits = temp.ToArray();
+                }
+            }
+
+            GetFileStream(serverRelativeUrl, GetBytes, ctx);
+            return bits;
+        }
+        
         private void ExecutingWebRequest(object sender, WebRequestEventArgs e) {
             if (!FormsBasedAuthAccepted)
                 e.WebRequestExecutor.WebRequest.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");

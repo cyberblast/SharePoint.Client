@@ -11,7 +11,7 @@
     <iconUrl>https://avatars2.githubusercontent.com/u/33760031?s=64</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Adapter Library to communicate with SharePoint 2013. CSOM wrapper: will install CSOM NuGet Package as well.</description>
-    <releaseNotes>Added nuget readme</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SharePoint 15 2013 Client Adapter Library CSOM</tags>
     <dependencies>

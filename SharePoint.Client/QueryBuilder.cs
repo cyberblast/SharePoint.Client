@@ -5,9 +5,26 @@ namespace cyberblast.SharePoint.Client
 {
     public static class QueryBuilder
     {
+        const int ROW_LIMIT = 300;
+        /// <summary>
+        /// Create a CAML query
+        /// </summary>
+        /// <param name="filter">filter expression. Will be wrapped into 'Where' tags.</param>
+        /// <param name="rowlimit">amount of items to retrieve per internal call.</param>
+        /// <param name="orderByFields">Sort order of items</param>
+        /// <returns>CAML query string</returns>
         public static QueryExpression Query(Expression filter, int rowlimit, params Order[] orderByFields)
         {
             return string.Format("<View><Query>{0}{1}</Query><RowLimit>{2}</RowLimit></View>", Where(filter), OrderBy(orderByFields), rowlimit);
+        }
+        /// <summary>
+        /// Create a CAML query
+        /// </summary>
+        /// <param name="filter">filter expression. Will be wrapped into 'Where' tags.</param>
+        /// <param name="orderByFields">Sort order of items</param>
+        /// <returns>CAML query string</returns>
+        public static QueryExpression Query(Expression filter, params Order[] orderByFields) {
+            return Query(filter, ROW_LIMIT, orderByFields);
         }
 
         #region Expressions

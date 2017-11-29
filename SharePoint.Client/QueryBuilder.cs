@@ -1,4 +1,5 @@
 ﻿using Microsoft.SharePoint.Client;
+using System;
 
 namespace cyberblast.SharePoint.Client
 {
@@ -123,13 +124,21 @@ namespace cyberblast.SharePoint.Client
             public static implicit operator Expression(string d) {
                 return new Expression(d);
             }
+            public override string ToString()
+            {
+                return _value;
+            }
         }
         public class Value {
             readonly string _value;
             public Value(string value) {
                 this._value = value;
             }
+            private static string DateString(DateTime value) {
+                return value.ToString("yyyy-MM-ddTHH:mm:ssZ");
+            }
             public Value(object value, FieldType type, bool? includeTimeValue = null) {
+                if (value is DateTime) value = DateString((DateTime)value);
                 if (includeTimeValue.HasValue)
                     this._value = string.Format(@"<Value Type=""{1}"" IncludeTimeValue=""{2}"">{0}</Value>", value, type.ToString(), includeTimeValue.ToString().ToUpper());
                 else
@@ -140,6 +149,9 @@ namespace cyberblast.SharePoint.Client
             }
             public static implicit operator Value(string d) {
                 return new Value(d);
+            }
+            public override string ToString(){
+                return _value;
             }
         }
         public class Field {
@@ -160,6 +172,10 @@ namespace cyberblast.SharePoint.Client
             public static implicit operator Field(string d) {
                 return new Field(d);
             }
+            public override string ToString()
+            {
+                return _value;
+            }
         }
         public class QueryExpression {
             readonly string _value;
@@ -173,6 +189,10 @@ namespace cyberblast.SharePoint.Client
             }
             public static implicit operator QueryExpression(string d) {
                 return new QueryExpression(d);
+            }
+            public override string ToString()
+            {
+                return _value;
             }
         }
         public class Order {
@@ -192,6 +212,10 @@ namespace cyberblast.SharePoint.Client
             }
             public static implicit operator Order(string d) {
                 return new Order(d);
+            }
+            public override string ToString()
+            {
+                return _value;
             }
         }
 
